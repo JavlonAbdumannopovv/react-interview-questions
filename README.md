@@ -256,7 +256,7 @@ You can download the PDF and Epub version of this repository from the latest run
 |224| [How do you render Array, Strings and Numbers in React 16 Version?](#how-do-you-render-array-strings-and-numbers-in-react-16-version)|
 |225| [How to use class field declarations syntax in React classes?](#how-to-use-class-field-declarations-syntax-in-react-classes)|
 |226| [What are hooks?](#what-are-hooks)|
-|227| [What rules need to be followed for hooks?](#what-rules-need-to-be-followed-for-hooks)|
+|227| [What are the rules needs to follow for hooks?](#what-are-the-rules-needs-to-follow-for-hooks)|
 |228| [How to ensure hooks followed the rules in your project?](#how-to-ensure-hooks-followed-the-rules-in-your-project)|
 |229| [What are the differences between Flux and Redux?](#what-are-the-differences-between-flux-and-redux)|
 |230| [What are the benefits of React Router V4?](#what-are-the-benefits-of-react-router-v4)|
@@ -4937,7 +4937,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
    **[⬆ Back to Top](#table-of-contents)**
     
-227. ### What rules need to be followed for hooks?
+227. ### What are the rules needs to follow for hooks?
 
      You need to follow two rules in order to use hooks,
 
@@ -6346,7 +6346,7 @@ You can download the PDF and Epub version of this repository from the latest run
      export default App;
      ```
 
-     Remember we provided an empty array as second argument to the effect hook to avoid activating it on component updates but only for the mounting of the component. i.e, It fetches only for component mount.
+     Remember we provided an empty array as second argument to the effect hook to avoid activating it on component updates but only on mounting of the component. i.e, It fetches only on component mount.
 
    **[⬆ Back to Top](#table-of-contents)**
     
