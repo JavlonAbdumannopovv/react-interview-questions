@@ -324,7 +324,7 @@ You can download the PDF and Epub version of this repository from the latest run
 |292| [How do you create HOC using render props?](#how-do-you-create-hoc-using-render-props)|
 |293| [What is windowing technique?](#what-is-windowing-technique)|
 |294| [How do you print falsy values in JSX?](#how-do-you-print-falsy-values-in-jsx)|
-|295| [What is the typical use case of portals?](#what-is-the-typical-use-case-of-portals)|
+|295| [What is the typical use case of portals?](#what-is-the-typical-use-case-of-portals?)|
 |296| [How do you set default value for uncontrolled component?](#how-do-you-set-default-value-for-uncontrolled-component)|
 |297| [What is your favorite React stack?](#what-is-your-favorite-react-stack)|
 |298| [What is the difference between Real DOM and Virtual DOM?](#what-is-the-difference-between-real-dom-and-virtual-dom)|
@@ -358,11 +358,7 @@ You can download the PDF and Epub version of this repository from the latest run
 |326| [What are the benefits of new JSX transform?](#what-are-the-benefits-of-new-jsx-transform)|
 |327| [How does new JSX transform different from old transform?](#how-does-new-jsx-transform-different-from-old-transform)|
 |328| [How do you get redux scaffolding using create-react-app?](#how-do-you-get-redux-scaffolding-using-create-react-app)|
-|329| [What are React Server components?](#what-are-react-server-components)|
-|330| [What is prop drilling?](#what-is-prop-drilling)|
-|331| [What is state mutation and how to prevent it?](#what-is-state-mutation-and-how-to-prevent-it)|
-|332| [What is the difference between useState and useRef hook?](#what-is-the-difference-between-usestate-and-useref-hook)|
-
+|329| [What are React Server components?](#what-are-react-server-components)
 ## Core React
 
 
@@ -2014,13 +2010,7 @@ You can download the PDF and Epub version of this repository from the latest run
       // ...
     }
     ```
-    also 
-    ```javascript 
-    const TodoApp = () => {
-     //...
-    }
-    export default TodoApp;
-    ```
+
 
    **[⬆ Back to Top](#table-of-contents)**
     
@@ -2861,7 +2851,9 @@ You can download the PDF and Epub version of this repository from the latest run
        static DEFAULT_PAGINATION = 10
      }
      ```
-     
+
+     *Static fields* are part of the *Class Fields* stage 3 proposal.
+
 
    **[⬆ Back to Top](#table-of-contents)**
     
@@ -6673,8 +6665,6 @@ ReactDOM.render(
      1. It is possible to use JSX without importing React packages
      2. The compiled output might improve the bundle size in a small amount
      3. The future improvements provides the flexibility to reduce the number of concepts to learn React.
-                 
-  **[⬆ Back to Top](#table-of-contents)**
 
 327. ### How does new JSX transform different from old transform?
      The new JSX transform doesn’t require React to be in scope. i.e, You don't need to import React package for simple scenarios.
@@ -6722,9 +6712,7 @@ ReactDOM.render(
      ```
 
      **Note:** You still need to import React to use Hooks.
-                 
-  **[⬆ Back to Top](#table-of-contents)**
-                 
+     
 328. ### How do you get redux scaffolding using create-react-app?
      Redux team has provided official redux+js or redux+typescript templates for create-react-app project. The generated project setup includes,
      
@@ -6743,21 +6731,15 @@ ReactDOM.render(
      ```js
      npx create-react-app my-app --template redux-typescript
      ````
-  **[⬆ Back to Top](#table-of-contents)**
-                 
 329. ### What are React Server components?
      React Server Component is a way to write React component that gets rendered in the server-side with the purpose of improving React app performance. These components allow us to load components from the backend. 
     
      **Note:** React Server Components is still under development and not recommended for production yet.
-                 
-  **[⬆ Back to Top](#table-of-contents)**
      
 330. ### What is prop drilling?
      Prop Drilling is the process by which you pass data from one component of the React Component tree to another by going through other components that do not need the data but only help in passing it around.
-                 
-  **[⬆ Back to Top](#table-of-contents)**
 
-331. ### What is state mutation and how to prevent it?
+331. ### What is state mutation and how to prevent it ?
                      
         `State mutation` happens when you try to update the state of a component without actually using `setState` function. This can happen when you are trying to do some computations using a state variable and unknowingly save the result in the same state variable. This is the main reason why it is advised to return new instances of state variables from the reducers by using Object.assign({}, ...) or spread syntax.
 
@@ -6782,11 +6764,4 @@ ReactDOM.render(
 
         **How to prevent it:** Make sure your state variables are immutable by either enforcing immutability by using plugins like Immutable.js, always using `setState` to make updates and returning new instances in reducers when sending updated state values.
         
-  **[⬆ Back to Top](#table-of-contents)**
-                            
-332. ### What is the difference between useState and useRef hook?
-     1. useState causes components to re-render after state updates whereas useRef doesn’t cause a component to re-render when the value or state changes.
-        Essentially, useRef is like a “box” that can hold a mutable value in its (.current) property.
-     2. useState allows us to update the state inside components. While useRef allows to reference DOM elements.
-                 
-  **[⬆ Back to Top](#table-of-contents)**
+        **[⬆ Back to Top](#table-of-contents)**
