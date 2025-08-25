@@ -324,7 +324,7 @@ You can download the PDF and Epub version of this repository from the latest run
 |292| [How do you create HOC using render props?](#how-do-you-create-hoc-using-render-props)|
 |293| [What is windowing technique?](#what-is-windowing-technique)|
 |294| [How do you print falsy values in JSX?](#how-do-you-print-falsy-values-in-jsx)|
-|295| [What is the typical use case of portals?](#what-is-the-typical-use-case-of-portals)|
+|295| [What is the typical use case of portals?](#what-is-the-typical-use-case-of-portals?)|
 |296| [How do you set default value for uncontrolled component?](#how-do-you-set-default-value-for-uncontrolled-component)|
 |297| [What is your favorite React stack?](#what-is-your-favorite-react-stack)|
 |298| [What is the difference between Real DOM and Virtual DOM?](#what-is-the-difference-between-real-dom-and-virtual-dom)|
@@ -358,11 +358,7 @@ You can download the PDF and Epub version of this repository from the latest run
 |326| [What are the benefits of new JSX transform?](#what-are-the-benefits-of-new-jsx-transform)|
 |327| [How does new JSX transform different from old transform?](#how-does-new-jsx-transform-different-from-old-transform)|
 |328| [How do you get redux scaffolding using create-react-app?](#how-do-you-get-redux-scaffolding-using-create-react-app)|
-|329| [What are React Server components?](#what-are-react-server-components)|
-|330| [What is prop drilling?](#what-is-prop-drilling)|
-|331| [What is state mutation and how to prevent it?](#what-is-state-mutation-and-how-to-prevent-it)|
-|332| [What is the difference between useState and useRef hook?](#what-is-the-difference-between-usestate-and-useref-hook)|
-
+|329| [What are React Server components?](#what-are-react-server-components)
 ## Core React
 
 
@@ -2014,13 +2010,7 @@ You can download the PDF and Epub version of this repository from the latest run
       // ...
     }
     ```
-    also 
-    ```javascript 
-    const TodoApp = () => {
-     //...
-    }
-    export default TodoApp;
-    ```
+
 
    **[⬆ Back to Top](#table-of-contents)**
     
@@ -2668,7 +2658,33 @@ You can download the PDF and Epub version of this repository from the latest run
      ReactDOM.render(<App />, document.getElementById('app'))
      ```
 
+     Also in Functional component (react 16.08 and above)
+     
+      ```jsx harmony
+      import React, {useEffect, useRef} from 'react';
 
+      const App = () => {
+        const inputElRef = useRef(null)
+        
+        useEffect(()=>{
+          inputElRef.current.focus()
+        }, [])
+        
+        return(
+          <div>
+            <input
+              defaultValue={'Won\'t focus'}
+            />
+            <input
+              ref={inputElRef}
+              defaultValue={'Will focus'}
+            />
+          </div>
+        )
+      }
+
+      ReactDOM.render(<App />, document.getElementById('app'))
+      ```
    **[⬆ Back to Top](#table-of-contents)**
     
 108. ### What are the possible ways of updating objects in state?
@@ -2861,7 +2877,9 @@ You can download the PDF and Epub version of this repository from the latest run
        static DEFAULT_PAGINATION = 10
      }
      ```
-     
+
+     *Static fields* are part of the *Class Fields* stage 3 proposal.
+
 
    **[⬆ Back to Top](#table-of-contents)**
     
@@ -3261,7 +3279,7 @@ You can download the PDF and Epub version of this repository from the latest run
          })
          ```
 
-     2. You should use the `<Router>` component instead of built-in routers. Import the above `history.js` inside `index.js` file:
+     2. You should use the `<Router>` component instead of built-in routers. Imported the above `history.js` inside `index.js` file:
 
          ```jsx harmony
          import { Router } from 'react-router-dom'
@@ -3630,7 +3648,7 @@ You can download the PDF and Epub version of this repository from the latest run
      }
      ```
      
-     It is recommended to always use the “object shorthand” form for the `mapDispatchToProps`.
+     Recommend always using the “object shorthand” form for the `mapDispatchToProps`
         
      Redux wrap it in another function that looks like (…args) => dispatch(onTodoClick(…args)), and pass that wrapper function as a prop to your component.
       
@@ -4799,7 +4817,7 @@ You can download the PDF and Epub version of this repository from the latest run
     
 221. ### What is React memo function?
 
-     Class components can be restricted from re-rendering when their input props are the same using **PureComponent or shouldComponentUpdate**. Now you can do the same with function components by wrapping them in **React.memo**.
+     Class components can be restricted from rendering when their input props are the same using **PureComponent or shouldComponentUpdate**. Now you can do the same with function components by wrapping them in **React.memo**.
      ```jsx
      const MyComponent = React.memo(function MyComponent(props) {
       /* only rerenders if props change */
@@ -4809,7 +4827,7 @@ You can download the PDF and Epub version of this repository from the latest run
    **[⬆ Back to Top](#table-of-contents)**
     
 222. ### What is React lazy function?
-     The `React.lazy` function lets you render a dynamic import as a regular component. It will automatically load the bundle containing the `OtherComponent` when the component gets rendered. This must return a Promise which resolves to a module with a default export containing a React component.
+     The `React.lazy` function lets you render an dynamic import as a regular component. It will automatically load the bundle containing the OtherComponent when the component gets rendered. This must return a Promise which resolves to a module with a default export containing a React component.
      ```jsx
      const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
@@ -4822,7 +4840,7 @@ You can download the PDF and Epub version of this repository from the latest run
      }
      ```
      **Note:**
-     `React.lazy` and `Suspense` is not yet available for server-side rendering. If you want to do code-splitting in a server rendered app, we still recommend React Loadable.
+     React.lazy and Suspense is not yet available for server-side rendering. If you want to do code-splitting in a server rendered app, we still recommend React Loadable.
 
    **[⬆ Back to Top](#table-of-contents)**
     
@@ -5158,7 +5176,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
      ```
 
-     If `props.color` is not provided then it will set the default value to 'red'. i.e, Whenever you try to access the color prop it uses default value
+     If props.color is not provided then it will set the default value to 'red'. i.e, Whenever you try to access the color prop it uses default value
      ```javascript
      render() {
         return <MyButton /> ; // props.color will be set to red
@@ -5361,7 +5379,7 @@ You can download the PDF and Epub version of this repository from the latest run
           return <EnhancedComponent />;
         }
         ```
-        The above code impacts on performance by remounting a component that causes the state of that component and all of its children to be lost. Instead, apply HOCs outside the component definition so that the resulting component is created only once.
+        The above code impact performance by remounting a component that causes the state of that component and all of its children to be lost. Instead, apply HOCs outside the component definition so that the resulting component is created only once.
 
      2. **Static methods must be copied over:**
         When you apply a HOC to a component the new component does not have any of the static methods of the original component
@@ -5530,7 +5548,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
    **[⬆ Back to Top](#table-of-contents)**
     
-263. ### How do you say that props are readonly?
+263. ### How do you say that props are read only?
      When you declare a component as a function or a class, it must never modify its own props.
 
      Let us take a below capital function,
@@ -5576,7 +5594,7 @@ You can download the PDF and Epub version of this repository from the latest run
          });
        }
      ```
-     As mentioned in the above code snippets, `this.setState({comments})` updates only comments variable without modifying or replacing `posts` variable.
+     As mentioned in the above code snippets, `this.setState({comments})` updates only comments variable without modifying or replacing posts variable.
 
    **[⬆ Back to Top](#table-of-contents)**
     
@@ -5589,7 +5607,7 @@ You can download the PDF and Epub version of this repository from the latest run
      <button onClick={(e) => this.updateUser(userId, e)}>Update User details</button>
      <button onClick={this.updateUser.bind(this, userId)}>Update User details</button>
      ```
-     In the both approaches, the synthetic argument `e` is passed as a second argument. You need to pass it explicitly for arrow functions and it will be passed automatically for `bind` method.
+     In both the approaches, the synthetic argument e is passed as a second argument. You need to pass it explicitly for arrow functions and it forwarded automatically for bind method.
 
    **[⬆ Back to Top](#table-of-contents)**
     
@@ -5626,7 +5644,7 @@ You can download the PDF and Epub version of this repository from the latest run
         );
        }
      ```
-     In the above example, the `greeting` component skips its rendering section by applying condition and returning null value.
+     In the above example, the greeting component skips its rendering section by applying condition and returning null value.
 
    **[⬆ Back to Top](#table-of-contents)**
     
@@ -5640,10 +5658,10 @@ You can download the PDF and Epub version of this repository from the latest run
 
    **[⬆ Back to Top](#table-of-contents)**
     
-268. ### Should keys be globally unique?
-     The keys used within arrays should be unique among their siblings but they don’t need to be globally unique. i.e, You can use the same keys with two different arrays.
+268. ### Is it keys should be globally unique?
+     Keys used within arrays should be unique among their siblings but they don’t need to be globally unique. i.e, You can use the same keys with two different arrays.
 
-     For example, the below `Book` component uses two arrays with different arrays,
+     For example, the below book component uses two arrays with different arrays,
 
      ```javascript
      function Book(props) {
@@ -5698,8 +5716,8 @@ You can download the PDF and Epub version of this repository from the latest run
 
    **[⬆ Back to Top](#table-of-contents)**
     
-271. ### Why are you not required to use inheritance?
-     In React, it is recommended to use composition over inheritance to reuse code between components. Both Props and composition give you all the flexibility you need to customize a component’s look and behavior in an explicit and safe way.
+271. ### Why do you not required to use inheritance?
+     In React, it is recommend using composition instead of inheritance to reuse code between components. Both Props and composition give you all the flexibility you need to customize a component’s look and behavior in an explicit and safe way.
      Whereas, If you want to reuse non-UI functionality between components, it is suggested to extracting it into a separate JavaScript module. Later components import it and use that function, object, or a class, without extending it.
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -5728,7 +5746,7 @@ You can download the PDF and Epub version of this repository from the latest run
    **[⬆ Back to Top](#table-of-contents)**
     
 273. ### What is dynamic import?
-     You can achieve code-splitting in your app using dynamic import.
+     The dynamic import() syntax is a ECMAScript proposal not currently part of the language standard. It is expected to be accepted in the near future. You can achieve code-splitting into your app using dynamic import.
 
      Let's take an example of addition,
 
@@ -5964,7 +5982,7 @@ You can download the PDF and Epub version of this repository from the latest run
    **[⬆ Back to Top](#table-of-contents)**
     
 282. ### What is the purpose of forward ref in HOCs?
-     Refs will not get passed through because ref is not a prop. It is handled differently by React just like **key**. If you add a ref to a HOC, the ref will refer to the outermost container component, not the wrapped component. In this case, you can use Forward Ref API. For example, we can explicitly forward refs to the inner FancyButton component using the React.forwardRef API.
+     Refs will not get passed through because ref is not a prop. It handled differently by React just like **key**. If you add a ref to a HOC, the ref will refer to the outermost container component, not the wrapped component. In this case, you can use Forward Ref API. For example, we can explicitly forward refs to the inner FancyButton component using the React.forwardRef API.
 
      The below HOC logs all props,
      
@@ -6019,7 +6037,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
    **[⬆ Back to Top](#table-of-contents)**
     
-283. ### Is ref argument available for all functions or class components?
+283. ### Is it ref argument available for all functions or class components?
      Regular function or class components don’t receive the ref argument, and ref is not available in props either. The second ref argument only exists when you define a component with React.forwardRef call.
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -6154,7 +6172,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
    **[⬆ Back to Top](#table-of-contents)**
     
-290. ### Must prop be named as render for render props?
+290. ### Is it prop must be named as render for render props?
      Even though the pattern named render props, you don’t have to use a prop named render to use this pattern. i.e,  Any prop that is a function that a component uses to know what to render is technically a “render prop”. Lets take an example with the children prop for render props,
 
      ```javascript
@@ -6226,7 +6244,7 @@ You can download the PDF and Epub version of this repository from the latest run
    **[⬆ Back to Top](#table-of-contents)**
     
 295. ### What is the typical use case of portals?
-     React portals are very useful when a parent component has overflow: hidden or has properties that affect the stacking context (e.g. z-index, position, opacity) and you need to visually “break out” of its container.
+     React portals are very useful when a parent component has overflow: hidden or has properties that affect the stacking context(z-index,position,opacity etc styles) and you need to visually “break out” of its container.
 
      For example, dialogs, global message notifications, hovercards, and tooltips.
 
@@ -6673,8 +6691,6 @@ ReactDOM.render(
      1. It is possible to use JSX without importing React packages
      2. The compiled output might improve the bundle size in a small amount
      3. The future improvements provides the flexibility to reduce the number of concepts to learn React.
-                 
-  **[⬆ Back to Top](#table-of-contents)**
 
 327. ### How does new JSX transform different from old transform?
      The new JSX transform doesn’t require React to be in scope. i.e, You don't need to import React package for simple scenarios.
@@ -6722,9 +6738,7 @@ ReactDOM.render(
      ```
 
      **Note:** You still need to import React to use Hooks.
-                 
-  **[⬆ Back to Top](#table-of-contents)**
-                 
+     
 328. ### How do you get redux scaffolding using create-react-app?
      Redux team has provided official redux+js or redux+typescript templates for create-react-app project. The generated project setup includes,
      
@@ -6743,28 +6757,22 @@ ReactDOM.render(
      ```js
      npx create-react-app my-app --template redux-typescript
      ````
-  **[⬆ Back to Top](#table-of-contents)**
-                 
 329. ### What are React Server components?
      React Server Component is a way to write React component that gets rendered in the server-side with the purpose of improving React app performance. These components allow us to load components from the backend. 
     
      **Note:** React Server Components is still under development and not recommended for production yet.
-                 
-  **[⬆ Back to Top](#table-of-contents)**
      
 330. ### What is prop drilling?
      Prop Drilling is the process by which you pass data from one component of the React Component tree to another by going through other components that do not need the data but only help in passing it around.
-                 
-  **[⬆ Back to Top](#table-of-contents)**
 
-331. ### What is state mutation and how to prevent it?
+331. ### What is state mutation and how to prevent it ?
                      
         `State mutation` happens when you try to update the state of a component without actually using `setState` function. This can happen when you are trying to do some computations using a state variable and unknowingly save the result in the same state variable. This is the main reason why it is advised to return new instances of state variables from the reducers by using Object.assign({}, ...) or spread syntax.
 
         This can cause unknown issues in the UI as the value of the state variable got updated without telling React to check what all components were being affected from this update and it can cause UI bugs.
 
         Ex:
-        ```javascript
+        ```
         class A extends React.component {
           constructor(props) {
             super(props);
@@ -6782,11 +6790,4 @@ ReactDOM.render(
 
         **How to prevent it:** Make sure your state variables are immutable by either enforcing immutability by using plugins like Immutable.js, always using `setState` to make updates and returning new instances in reducers when sending updated state values.
         
-  **[⬆ Back to Top](#table-of-contents)**
-                            
-332. ### What is the difference between useState and useRef hook?
-     1. useState causes components to re-render after state updates whereas useRef doesn’t cause a component to re-render when the value or state changes.
-        Essentially, useRef is like a “box” that can hold a mutable value in its (.current) property.
-     2. useState allows us to update the state inside components. While useRef allows to reference DOM elements.
-                 
-  **[⬆ Back to Top](#table-of-contents)**
+        **[⬆ Back to Top](#table-of-contents)**
