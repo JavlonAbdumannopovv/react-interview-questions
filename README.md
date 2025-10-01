@@ -650,19 +650,16 @@ You can download the PDF and Epub version of this repository from the latest run
     1.	**Binding in Constructor:** In JavaScript classes, the methods are not bound by default. The same thing applies for React event handlers defined as class methods. Normally we bind them in constructor.
 
         ```javascript
-        class Foo extends Component {
+        class Component extends React.Component {
           constructor(props) {
-            super(props);
-            this.handleClick = this.handleClick.bind(this);
+            super(props)
+            this.handleClick = this.handleClick.bind(this)
           }
+
           handleClick() {
-            console.log('Click happened');
-          }
-          render() {
-            return <button onClick={this.handleClick}>Click Me</button>;
+            // ...
           }
         }
-
         ```
 
     2. **Public class fields syntax:** If you don't like to use bind approach then *public class fields syntax* can be used to correctly bind callbacks.
@@ -682,12 +679,9 @@ You can download the PDF and Epub version of this repository from the latest run
     3. **Arrow functions in callbacks:** You can use *arrow functions* directly in the callbacks.
 
         ```jsx harmony
-        handleClick() {
-            console.log('Click happened');
-        }
-        render() {
-            return <button onClick={() => this.handleClick()}>Click Me</button>;
-        }
+        <button onClick={(event) => this.handleClick(event)}>
+          {'Click me'}
+        </button>
         ```
 
     **Note:** If the callback is passed as prop to child components, those components might do an extra re-rendering. In those cases, it is preferred to go with `.bind()` or *public class fields syntax* approach considering performance.
@@ -1020,7 +1014,7 @@ You can download the PDF and Epub version of this repository from the latest run
     }
     ```
 
-    In most cases, it's recommend to use controlled components to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form         data is handled by the DOM itself.
+    In most cases, it's recommend to use controlled components to implement forms.
 
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -1045,9 +1039,9 @@ You can download the PDF and Epub version of this repository from the latest run
 
     1. **Mounting:** The component is ready to mount in the browser DOM. This phase covers initialization from `constructor()`, `getDerivedStateFromProps()`, `render()`, and `componentDidMount()` lifecycle methods.
 
-    2. **Updating:** In this phase, the component gets updated in two ways, sending the new props and updating the state either from `setState()` or `forceUpdate()`. This phase covers `getDerivedStateFromProps()`, `shouldComponentUpdate()`, `render()`, `getSnapshotBeforeUpdate()` and `componentDidUpdate()` lifecycle methods.
+    2. **Updating:** In this phase, the component get updated in two ways, sending the new props and updating the state either from `setState()` or `forceUpdate()`. This phase covers `getDerivedStateFromProps()`, `shouldComponentUpdate()`, `render()`, `getSnapshotBeforeUpdate()` and `componentDidUpdate()` lifecycle methods.
 
-    3. **Unmounting:** In this last phase, the component is not needed and gets unmounted from the browser DOM. This phase includes `componentWillUnmount()` lifecycle method.
+    3. **Unmounting:** In this last phase, the component is not needed and get unmounted from the browser DOM. This phase includes `componentWillUnmount()` lifecycle method.
 
     It's worth mentioning that React internally has a concept of phases when applying changes to the DOM. They are separated as follows
 
@@ -1059,7 +1053,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
     React 16.3+ Phases (or an [interactive version](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/))
 
-    ![phases 16.4+](images/phases16.4.png)
+    ![phases 16.4+](images/phases16.4.jpg)
 
     Before React 16.3
 
@@ -2091,7 +2085,7 @@ You can download the PDF and Epub version of this repository from the latest run
     this.setState({ count: this.state.count + 1 })
     this.setState({ count: this.state.count + 1 })
     this.setState({ count: this.state.count + 1 })
-    // this.state.count === 0, not 3
+    // this.state.count === 1, not 3
     ```
 
     If we pass a function to `setState()`, the count gets incremented correctly.
@@ -4632,7 +4626,7 @@ You can download the PDF and Epub version of this repository from the latest run
      For example, the height property can be defined with either `string` or `number` type as below:
 
      ```javascript
-     Component.propTypes = {
+     Component.PropTypes = {
        size: PropTypes.oneOfType([
          PropTypes.string,
          PropTypes.number
