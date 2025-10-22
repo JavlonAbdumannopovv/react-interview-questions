@@ -3,17 +3,22 @@
 > Click :star:if you like the project. Pull Request are highly appreciated. Follow me [@SudheerJonna](https://twitter.com/SudheerJonna) for technical updates.
 
 ---
-<div>
-Learn to code and get hired with <a href="https://zerotomastery.io/?utm_source=github&utm_medium=sponsor&utm_campaign=reactjs-interview-questions">Zero To Mastery:</a>
-<ol>
-<li>This <a href="https://links.zerotomastery.io/react_sudheer">React course</a> is good if you’re struggling to learn React beyond the basics</li>
-<li>This <a href="http://links.zerotomastery.io/mci_sudheer">coding interview bootcamp</a> is helpful if you’re serious about getting hired as a developer</li>
-</ol>
+
+<div align="center">
+    <p>
+        <a href="https://www.fullstack.cafe/?utm_source=github&utm_medium=sud">
+            <b>Having Tech Interview?</b>
+            <br> 3600 Tech Interview Questions. <b>Answered</b>.
+            <br>
+            <div>
+                <img src="https://user-images.githubusercontent.com/13550565/76382460-cc784d80-6393-11ea-8837-2b89265ac853.png" width="260" alt="FullStack.Cafe">
+            </div>
+        </a>
+        <sub><i>Proudly supporting React Interview Questions</i></sub>
+    </p>
 </div>
 
 ---
-
-**Note:** This repository is specific to ReactJS. Please check [Javascript Interview questions](https://github.com/sudheerj/javascript-interview-questions) for core javascript questions.
 
 ## Downloading PDF/Epub formats
 
@@ -262,7 +267,7 @@ You can download the PDF and Epub version of this repository from the latest run
 |230| [What are the benefits of React Router V4?](#what-are-the-benefits-of-react-router-v4)|
 |231| [Can you describe about componentDidCatch lifecycle method signature?](#can-you-describe-about-componentdidcatch-lifecycle-method-signature)|
 |232| [In which scenarios error boundaries do not catch errors?](#in-which-scenarios-error-boundaries-do-not-catch-errors)|
-|233| [Why do you not need error boundaries for event handlers?](#why-do-you-not-need-error-boundaries-for-event-handlers)|
+|233| [Why do not you need error boundaries for event handlers?](#why-do-not-you-need-error-boundaries-for-event-handlers)|
 |234| [What is the difference between try catch block and error boundaries?](#what-is-the-difference-between-try-catch-block-and-error-boundaries)|
 |235| [What is the behavior of uncaught errors in react 16?](#what-is-the-behavior-of-uncaught-errors-in-react-16)|
 |236| [What is the proper placement for error boundaries?](#what-is-the-proper-placement-for-error-boundaries)|
@@ -358,7 +363,7 @@ You can download the PDF and Epub version of this repository from the latest run
 |326| [What are the benefits of new JSX transform?](#what-are-the-benefits-of-new-jsx-transform)|
 |327| [How does new JSX transform different from old transform?](#how-does-new-jsx-transform-different-from-old-transform)|
 |328| [How do you get redux scaffolding using create-react-app?](#how-do-you-get-redux-scaffolding-using-create-react-app)|
-|329| [What are React Server components?](#what-are-react-server-components)
+
 ## Core React
 
 
@@ -435,7 +440,7 @@ You can download the PDF and Epub version of this repository from the latest run
     <div id='login-btn'>Login</div>
     ```
 
-    Whereas a **component** can be declared in several different ways. It can be a class with a `render()` method or it can be defined as a function. In either case, it takes props as an input, and returns a JSX tree as the output:
+    Whereas a **component** can be declared in several different ways. It can be a class with a `render()` method. Alternatively, in simple cases, it can be defined as a function. In either case, it takes props as an input, and returns a JSX tree as the output:
 
     ```javascript
     const Button = ({ onLogin }) =>
@@ -485,7 +490,6 @@ You can download the PDF and Epub version of this repository from the latest run
 
     If the component needs *state or lifecycle methods* then use class component otherwise use function component.
     *However, from React 16.8 with the addition of Hooks, you could use state , lifecycle  methods and other features that were only available in class component right in your function component.*
-    *So, it is always recommended to use Function components, unless you need a React functionality whose Function component equivalent is not present yet, like Error Boundaries *
 
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -501,7 +505,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
     *State* of a component is an object that holds some information that may change over the lifetime of the component. We should always try to make our state as simple as possible and minimize the number of stateful components.
 
-    Let's create a user component with message state,
+    Let's create an user component with message state,
 
 
     ```jsx harmony
@@ -526,7 +530,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
     ![state](images/state.jpg)
 
-    State is similar to props, but it is private and fully controlled by the component. i.e, It is not accessible to any other component til the owner component decides to pass it.
+    State is similar to props, but it is private and fully controlled by the component. i.e, It is not accessible to any component other than the one that owns and sets it.
 
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -565,7 +569,7 @@ You can download the PDF and Epub version of this repository from the latest run
     
 11. ### Why should we not update the state directly?
 
-    If you try to update the state directly then it won't re-render the component.
+    If you try to update state directly then it won't re-render the component.
 
     ```javascript
     //Wrong
@@ -600,7 +604,7 @@ You can download the PDF and Epub version of this repository from the latest run
 13. ### What is the difference between HTML and React event handling?
     Below are some of the main differences between HTML and React event handling,
 
-    1. In HTML, the event name usually represents in *lowercase* as a convention:
+    1. In HTML, the event name should be in *lowercase*:
 
         ```html
         <button onclick='activateLasers()'>
@@ -640,19 +644,16 @@ You can download the PDF and Epub version of this repository from the latest run
     1.	**Binding in Constructor:** In JavaScript classes, the methods are not bound by default. The same thing applies for React event handlers defined as class methods. Normally we bind them in constructor.
 
         ```javascript
-        class Foo extends Component {
+        class Component extends React.Component {
           constructor(props) {
-            super(props);
-            this.handleClick = this.handleClick.bind(this);
+            super(props)
+            this.handleClick = this.handleClick.bind(this)
           }
+
           handleClick() {
-            console.log('Click happened');
-          }
-          render() {
-            return <button onClick={this.handleClick}>Click Me</button>;
+            // ...
           }
         }
-
         ```
 
     2. **Public class fields syntax:** If you don't like to use bind approach then *public class fields syntax* can be used to correctly bind callbacks.
@@ -672,12 +673,9 @@ You can download the PDF and Epub version of this repository from the latest run
     3. **Arrow functions in callbacks:** You can use *arrow functions* directly in the callbacks.
 
         ```jsx harmony
-        handleClick() {
-            console.log('Click happened');
-        }
-        render() {
-            return <button onClick={() => this.handleClick()}>Click Me</button>;
-        }
+        <button onClick={(event) => this.handleClick(event)}>
+          {'Click me'}
+        </button>
         ```
 
     **Note:** If the callback is passed as prop to child components, those components might do an extra re-rendering. In those cases, it is preferred to go with `.bind()` or *public class fields syntax* approach considering performance.
@@ -711,7 +709,7 @@ You can download the PDF and Epub version of this repository from the latest run
     
 16. ### What are synthetic events in React?
 
-    `SyntheticEvent` is a cross-browser wrapper around the browser's native event. Its API is same as the browser's native event, including `stopPropagation()` and `preventDefault()`, except the events work identically across all browsers.
+    `SyntheticEvent` is a cross-browser wrapper around the browser's native event. It's API is same as the browser's native event, including `stopPropagation()` and `preventDefault()`, except the events work identically across all browsers.
 
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -950,15 +948,7 @@ You can download the PDF and Epub version of this repository from the latest run
 28. ### What is the main goal of React Fiber?
 
     The goal of *React Fiber* is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is **incremental rendering**: the ability to split rendering work into chunks and spread it out over multiple frames.
-    
-    *from documentation*
 
-    Its main goals are:
-      1. Ability to split interruptible work in chunks.
-      2. Ability to prioritize, rebase and reuse work in progress.
-      3. Ability to yield back and forth between parents and children to support layout in React.
-      4. Ability to return multiple elements from render().
-      5. Better support for error boundaries.
 
    **[⬆ Back to Top](#table-of-contents)**
     
@@ -1010,7 +1000,7 @@ You can download the PDF and Epub version of this repository from the latest run
     }
     ```
 
-    In most cases, it's recommend to use controlled components to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form         data is handled by the DOM itself.
+    In most cases, it's recommend to use controlled components to implement forms.
 
 
    **[⬆ Back to Top](#table-of-contents)**
@@ -1035,9 +1025,9 @@ You can download the PDF and Epub version of this repository from the latest run
 
     1. **Mounting:** The component is ready to mount in the browser DOM. This phase covers initialization from `constructor()`, `getDerivedStateFromProps()`, `render()`, and `componentDidMount()` lifecycle methods.
 
-    2. **Updating:** In this phase, the component gets updated in two ways, sending the new props and updating the state either from `setState()` or `forceUpdate()`. This phase covers `getDerivedStateFromProps()`, `shouldComponentUpdate()`, `render()`, `getSnapshotBeforeUpdate()` and `componentDidUpdate()` lifecycle methods.
+    2. **Updating:** In this phase, the component get updated in two ways, sending the new props and updating the state either from `setState()` or `forceUpdate()`. This phase covers `getDerivedStateFromProps()`, `shouldComponentUpdate()`, `render()`, `getSnapshotBeforeUpdate()` and `componentDidUpdate()` lifecycle methods.
 
-    3. **Unmounting:** In this last phase, the component is not needed and gets unmounted from the browser DOM. This phase includes `componentWillUnmount()` lifecycle method.
+    3. **Unmounting:** In this last phase, the component is not needed and get unmounted from the browser DOM. This phase includes `componentWillUnmount()` lifecycle method.
 
     It's worth mentioning that React internally has a concept of phases when applying changes to the DOM. They are separated as follows
 
@@ -1049,7 +1039,7 @@ You can download the PDF and Epub version of this repository from the latest run
 
     React 16.3+ Phases (or an [interactive version](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/))
 
-    ![phases 16.4+](images/phases16.4.png)
+    ![phases 16.3+](images/phases16.3.jpg)
 
     Before React 16.3
 
@@ -1313,7 +1303,7 @@ You can download the PDF and Epub version of this repository from the latest run
     
 46. ### What are fragments?
 
-    It's a common pattern in React which is used for a component to return multiple elements. *Fragments* let you group a list of children without adding extra nodes to the DOM.
+    It's common pattern in React which is used for a component to return multiple elements. *Fragments* let you group a list of children without adding extra nodes to the DOM.
 
     ```jsx harmony
     render() {
@@ -1460,11 +1450,11 @@ You can download the PDF and Epub version of this repository from the latest run
     import React from 'react'
     import PropTypes from 'prop-types'
    
-    function User({name, age}) {
+    function User() {
       return (
         <>
-          <h1>{`Welcome, ${name}`}</h1>
-          <h2>{`Age, ${age}`}</h2>
+          <h1>{`Welcome, ${this.props.name}`}</h1>
+          <h2>{`Age, ${this.props.age}`}</h2>
         </>
       )
     }
@@ -2138,7 +2128,7 @@ You can download the PDF and Epub version of this repository from the latest run
               <ComponentTwo />
             </div>
           </React.StrictMode>
-          <Header />
+          <Footer />
         </div>
       )
     }
@@ -2232,18 +2222,19 @@ You can download the PDF and Epub version of this repository from the latest run
     ```
 
 
-    #### What are the exceptions on React component naming?
+ #### What are the exceptions on React component naming?
 
-    The component names should start with a uppercase letter but there are few exceptions on this convention. The lowercase tag names with a dot (property accessors) are still considered as valid component names.
-    For example the below tag can be compiled to a valid component,
+     The component names should start with a uppercase letter but there are few exceptions on this convention. The lowercase tag names with a dot (property accessors) are still considered as valid component names.
 
-    ```jsx harmony
-         render() {
-              return (
-                <obj.component/> // `React.createElement(obj.component)`
-              )
-        }
-    ```
+     For example the below tag can be compiled to a valid component,
+     
+     ```jsx harmony
+     render(){
+        return (
+            <obj.component /> // `React.createElement(obj.component)`
+           )
+     }
+     ```
 
    **[⬆ Back to Top](#table-of-contents)**
     
@@ -3337,7 +3328,7 @@ You can download the PDF and Epub version of this repository from the latest run
          />
          ```
 
-     2. **Using an API:**
+    2. **Using an API:**
 
          ```javascript
          const messages = defineMessages({
@@ -4622,7 +4613,7 @@ You can download the PDF and Epub version of this repository from the latest run
      For example, the height property can be defined with either `string` or `number` type as below:
 
      ```javascript
-     Component.propTypes = {
+     Component.PropTypes = {
        size: PropTypes.oneOfType([
          PropTypes.string,
          PropTypes.number
@@ -5016,22 +5007,18 @@ You can download the PDF and Epub version of this repository from the latest run
 
    **[⬆ Back to Top](#table-of-contents)**
     
-233. ### Why do you not need error boundaries for event handlers?
-     Error boundaries do not catch errors inside event handlers.
-     
-     React doesn’t need error boundaries to recover from errors in event handlers. Unlike the render method and lifecycle methods, the event handlers don’t happen during rendering. So if they throw, React still knows what to display on the screen.
-
-     If you need to catch an error inside an event handler, use the regular JavaScript try / catch statement:
+233. ### Why do not you need error boundaries for event handlers?
+     Error boundaries do not catch errors inside event handlers. Event handlers don't happened or invoked during rendering time unlike render method or lifecycle methods. So React knows how to recover these kind of errors in event handlers.
+     If still you need to catch an error inside event handler, use the regular JavaScript try / catch statement as below
 
      ```javascript
      class MyComponent extends React.Component {
        constructor(props) {
          super(props);
          this.state = { error: null };
-         this.handleClick = this.handleClick.bind(this);
        }
 
-       handleClick() {
+       handleClick = () => {
          try {
            // Do something that could throw
          } catch (error) {
@@ -5043,11 +5030,11 @@ You can download the PDF and Epub version of this repository from the latest run
          if (this.state.error) {
            return <h1>Caught an error.</h1>
          }
-         return <button onClick={this.handleClick}>Click Me</button>
+         return <div onClick={this.handleClick}>Click Me</div>
        }
      }
      ```
-     Note that the above example is demonstrating regular JavaScript behavior and doesn’t use error boundaries.
+     The above code is catching the error using vanilla javascript try/catch block instead of error boundaries.
 
    **[⬆ Back to Top](#table-of-contents)**
     
@@ -5172,7 +5159,7 @@ You can download the PDF and Epub version of this repository from the latest run
      ```javascript
      static getDerivedStateFromError(error)
      ```
-     Let us take error boundary use case with the above lifecycle method for demonstration purpose,
+     Let us take error boundary use case with the above lifecycle method for demonistration purpose,
      ```javascript
      class ErrorBoundary extends React.Component {
        constructor(props) {
@@ -5959,8 +5946,8 @@ You can download the PDF and Epub version of this repository from the latest run
      Refs will not get passed through because ref is not a prop. It handled differently by React just like **key**. If you add a ref to a HOC, the ref will refer to the outermost container component, not the wrapped component. In this case, you can use Forward Ref API. For example, we can explicitly forward refs to the inner FancyButton component using the React.forwardRef API.
 
      The below HOC logs all props,
-     
-     ```javascript
+
+         ```javascript
          function logProps(Component) {
            class LogProps extends React.Component {
              componentDidUpdate(prevProps) {
@@ -5980,11 +5967,11 @@ You can download the PDF and Epub version of this repository from the latest run
              return <LogProps {...props} forwardedRef={ref} />;
            });
          }
-     ```
+         ```
 
      Let's use this HOC to log all props that get passed to our “fancy button” component,
 
-     ```javascript
+         ```javascript
          class FancyButton extends React.Component {
            focus() {
              // ...
@@ -5993,11 +5980,11 @@ You can download the PDF and Epub version of this repository from the latest run
            // ...
          }
          export default logProps(FancyButton);
-     ```
+         ```
 
      Now lets create a ref and pass it to FancyButton component. In this case, you can set focus to button element.
 
-     ```javascript
+         ```javascript
          import FancyButton from './FancyButton';
 
          const ref = React.createRef();
@@ -6007,7 +5994,7 @@ You can download the PDF and Epub version of this repository from the latest run
            handleClick={handleClick}
            ref={ref}
          />;
-     ```
+         ```
 
    **[⬆ Back to Top](#table-of-contents)**
     
@@ -6322,14 +6309,12 @@ You can download the PDF and Epub version of this repository from the latest run
      function App() {
        const [data, setData] = useState({ hits: [] });
 
-       useEffect(() => {
-         (async () => {
-           const result = await axios(
-             'http://hn.algolia.com/api/v1/search?query=react',
-           );
+       useEffect(async () => {
+         const result = await axios(
+           'http://hn.algolia.com/api/v1/search?query=react',
+         );
 
-           setData(result.data);
-         })()
+         setData(result.data);
        }, []);
 
        return (
@@ -6731,37 +6716,5 @@ ReactDOM.render(
      ```js
      npx create-react-app my-app --template redux-typescript
      ````
-329. ### What are React Server components?
-     React Server Component is a way to write React component that gets rendered in the server-side with the purpose of improving React app performance. These components allow us to load components from the backend. 
-    
-     **Note:** React Server Components is still under development and not recommended for production yet.
-     
-330. ### What is prop drilling?
-     Prop Drilling is the process by which you pass data from one component of the React Component tree to another by going through other components that do not need the data but only help in passing it around.
 
-331. ### What is state mutation and how to prevent it ?
-                     
-        `State mutation` happens when you try to update the state of a component without actually using `setState` function. This can happen when you are trying to do some computations using a state variable and unknowingly save the result in the same state variable. This is the main reason why it is advised to return new instances of state variables from the reducers by using Object.assign({}, ...) or spread syntax.
 
-        This can cause unknown issues in the UI as the value of the state variable got updated without telling React to check what all components were being affected from this update and it can cause UI bugs.
-
-        Ex:
-        ```
-        class A extends React.component {
-          constructor(props) {
-            super(props);
-            this.state = {
-              loading: false
-            }
-         }
-
-        componentDidMount() {
-          let { loading } = this.state;
-          loading = (() => true)(); // Trying to perform an operation and directly saving in a state variable
-        }
-
-        ```
-
-        **How to prevent it:** Make sure your state variables are immutable by either enforcing immutability by using plugins like Immutable.js, always using `setState` to make updates and returning new instances in reducers when sending updated state values.
-        
-        **[⬆ Back to Top](#table-of-contents)**
